@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login Page</title>
+    @include('include.style')
+    <style>
+        body {
+            background-image: url("{{ asset('assets/images/bg-auth.svg') }}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="{{ asset('assets/images/logo.svg') }}" alt="Logo">
+            </a>
+        </div>
+    </nav>
+    <div class="container-fluid d-flex flex-grow-1 justify-content-center align-items-start">
+        <div class="col-lg-4 col-md-6 col-sm-8 col-10">
+            <h1 class="m-5 text-center text-white fw-bold">Selamat Datang</h1>
+            <div class="card p-3 shadow rounded-4">
+                <div class="card-body">
+                    <h5 class="card-title text-center fw-semibold">Silahkan Masuk Dulu</h5>
+                    <form action="">
+                        <div class="mb-3">
+                            <label for="emailInput" class="form-label fw-semibold">Email</label>
+                            <input type="email" class="form-control" id="emailInput" placeholder="email@mail.com">
+                        </div>
+                        <div class="mb-2">
+                            <label for="passwordInput" class="form-label fw-semibold">Password</label>
+                            <input type="password" class="form-control" id="passwordInput" placeholder="********">
+                        </div>
+                        <div class="mb-3">
+                            <a href="#" class="text-muted text-decoration-none">
+                                Lupa password?
+                            </a>
+                        </div>
+                        <a href="#" class="btn btn-primary-color w-100">Masuk</a>
+                    </form>
+                </div>
+                <div class="p-3">
+                    <label>Belum Punya Akun? <a href="#" class="primary-color text-decoration-none">Daftar
+                            Dulu</a></label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @include('include.script')
+</body>
+
+</html>

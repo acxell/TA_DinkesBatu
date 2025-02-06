@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -18,9 +19,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/login', [AuthController::class, 'index'])->name('auth.index');
+Route::get('/register', [AuthController::class, 'register'])->name('auth.register');
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
 Route::post('/users', [UserController::class, 'store'])->name('users.store');
 Route::post('/users/{id}', [UserController::class, 'update'])->name('users.update');
 Route::post('/users/{id}/delete', [UserController::class, 'destroy'])->name('users.destroy');
-
-
