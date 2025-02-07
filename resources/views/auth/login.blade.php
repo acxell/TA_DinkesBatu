@@ -32,21 +32,22 @@
             <div class="card p-3 shadow rounded-4">
                 <div class="card-body">
                     <h5 class="card-title text-center fw-semibold">Silahkan Masuk Dulu</h5>
-                    <form action="">
+                    <form class="form" method="POST" action="{{ route('auth.login') }}" enctype="multipart/form-data">
+                        @csrf
                         <div class="mb-3">
                             <label for="emailInput" class="form-label fw-semibold">Email</label>
-                            <input type="email" class="form-control" id="emailInput" placeholder="email@mail.com">
+                            <input type="email" name="email" class="form-control" id="emailInput" placeholder="email@mail.com">
                         </div>
                         <div class="mb-2">
                             <label for="passwordInput" class="form-label fw-semibold">Password</label>
-                            <input type="password" class="form-control" id="passwordInput" placeholder="********">
+                            <input type="password" name="password" class="form-control" id="passwordInput" placeholder="********">
                         </div>
                         <div class="mb-3">
                             <a href="#" class="text-muted text-decoration-none">
                                 Lupa password?
                             </a>
                         </div>
-                        <a href="#" class="btn btn-primary-color w-100">Masuk</a>
+                        <button class="btn btn-primary-color w-100">Masuk</button>
                     </form>
                 </div>
                 <div class="p-3">

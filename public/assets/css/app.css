@@ -6,12 +6,12 @@ body {
 
 
 .btn-primary-color {
-    color: white;
-    background-color: rgba(132, 221, 99, 1);
+    color: white!important;
+    background-color: rgba(132, 221, 99, 1)!important;
 }
 .btn-primary-color:hover {
     color: white;
-    background-color: rgb(117, 197, 88);
+    background-color: rgb(117, 197, 88)!important;
 }
 
 .primary-color {
