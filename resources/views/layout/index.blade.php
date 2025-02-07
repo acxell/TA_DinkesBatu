@@ -16,7 +16,6 @@
         <div id="main" class="layout-navbar navbar-fixed">
             @include('include.header')
             @yield('content')
-            @include('include.footer')
         </div>
     </div>
     @include('include.script');
