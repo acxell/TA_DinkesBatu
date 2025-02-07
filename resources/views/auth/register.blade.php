@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/smartwizard@6/dist/css/smart_wizard_all.min.css" rel="stylesheet"
         type="text/css" />
     @include('include.style')
-    <link rel="stylesheet" href="{{ asset('css/smartwizard.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/smartwizard.css') }}">
     <style>
         body {
             background-image: url("{{ asset('assets/images/bg-auth.svg') }}");
