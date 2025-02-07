@@ -12,14 +12,14 @@
 
 <body>
     <div id="app">
-        @include('sidebar')
+        @include('include.sidebar')
         <div id="main" class="layout-navbar navbar-fixed">
-            @include('header')
+            @include('include.header')
             @yield('content')
-            @include('footer')
+            @include('include.footer')
         </div>
     </div>
-    @include('script');
+    @include('include.script');
     @yield('script')
 
 </body>
