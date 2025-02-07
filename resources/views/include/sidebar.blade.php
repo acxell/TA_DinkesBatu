@@ -3,15 +3,10 @@
 <div id="sidebar">
     <div class="sidebar-wrapper active">
         <div class="sidebar-header position-relative">
-            <div class="d-flex justify-content-between align-items-center">
-                <div class="logo">
-                    <a href="#">
-                        <img src="" alt="Logo" srcset="" />
-                    </a>
-                </div>
-                <div class="sidebar-toggler x">
-                    <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
-                </div>
+            <div class="d-flex justify-content-center align-items-center w-100">
+                <a href="{{ route('dashboard') }}" class="w-100">
+                    <img src="{{ asset('assets/images/logo.svg') }}" alt="Logo" class="w-80 h-auto d-block" />
+                </a>
             </div>
         </div>
         <div class="sidebar-menu">
@@ -26,17 +21,14 @@
                 <li class="sidebar-item has-sub">
                     <a href="#" class="sidebar-link">
                         <i class="bi bi-file-earmark-ruled-fill"></i>
-                        <span>Laporan Perkembangan</span>
+                        <span>Laporan</span>
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item">
-                            <a href="#" class="submenu-link">Neraca</a>
+                            <a href="#" class="submenu-link">Kecamatan</a>
                         </li>
                         <li class="submenu-item">
-                            <a href="#" class="submenu-link">Aktivitas</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#" class="submenu-link">Arus Kas</a>
+                            <a href="#" class="submenu-link">Kelurahan</a>
                         </li>
                     </ul>
                 </li>
@@ -45,6 +37,17 @@
                         <i class="bi bi-bar-chart-line"></i>
                         <span>Profil Anak</span>
                     </a>
+                </li>
+                <li class="sidebar-item has-sub">
+                    <a href="#" class="sidebar-link">
+                        <i class="bi bi-people-fill"></i>
+                        <span>Data Pengguna</span>
+                    </a>
+                    <ul class="submenu">
+                        <li class="submenu-item">
+                            <a href="{{ route('users.index') }}" class="submenu-link">Data Orang Tua</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>

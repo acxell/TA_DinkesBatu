@@ -1,4 +1,4 @@
-import isDesktop from '../helper/isDesktop'
+import isDesktop from './isDesktop'
 
 
 /**

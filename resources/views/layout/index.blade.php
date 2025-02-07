@@ -13,9 +13,11 @@
 <body>
     <div id="app">
         @include('include.sidebar')
-        <div id="main" class="layout-navbar navbar-fixed">
+        <div id="main" class="main-content">
             @include('include.header')
-            @yield('content')
+            <div class="content mx-2 my-3">
+                @yield('content')
+            </div>
         </div>
     </div>
     @include('include.script');
