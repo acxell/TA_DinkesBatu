@@ -36,22 +36,25 @@
                         @csrf
                         <div class="mb-3">
                             <label for="emailInput" class="form-label fw-semibold">Email</label>
-                            <input type="email" name="email" class="form-control" id="emailInput" placeholder="email@mail.com">
+                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
+                                id="emailInput" value="{{ old('email') }}" placeholder="email@mail.com">
+                            @error('email')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="mb-2">
                             <label for="passwordInput" class="form-label fw-semibold">Password</label>
-                            <input type="password" name="password" class="form-control" id="passwordInput" placeholder="********">
-                        </div>
-                        <div class="mb-3">
-                            <a href="#" class="text-muted text-decoration-none">
-                                Lupa password?
-                            </a>
+                            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"
+                                id="passwordInput" placeholder="********">
+                            @error('password')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                         </div>
                         <button class="btn btn-primary-color w-100">Masuk</button>
                     </form>
                 </div>
                 <div class="p-3">
-                    <label>Belum Punya Akun? <a href="#" class="primary-color text-decoration-none">Daftar
+                    <label>Belum Punya Akun? <a href="{{ route('register') }}" class="primary-color text-decoration-none">Daftar
                             Dulu</a></label>
                 </div>
             </div>

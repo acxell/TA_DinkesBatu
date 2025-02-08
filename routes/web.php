@@ -16,12 +16,20 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::group(['middleware' => 'auth'], function () {
+// Group routes that require authentication
+Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 });
-Route::get('/', [AuthController::class, 'index'])->name('login');
-Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
-Route::get('/register', [AuthController::class, 'register'])->name('auth.register');
+
+// Auth routes outside middleware group
+Route::middleware(['guest'])->group(function () {
+    Route::get('/', [AuthController::class, 'index'])->name('login');
+    Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
+    Route::get('/register', [AuthController::class, 'register'])->name('register');
+});
+
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
 Route::post('/users', [UserController::class, 'store'])->name('users.store');
 Route::post('/users/{id}', [UserController::class, 'update'])->name('users.update');

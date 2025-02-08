@@ -2,31 +2,45 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AuthRequest\LoginRequest;
+use App\Services\AuthService;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
+    protected $authService;
+
+    public function __construct(AuthService $authService)
+    {
+        $this->authService = $authService;
+    }
 
     public function index()
     {
         return view('auth.login');
     }
 
-    public function login(Request $request)
+    public function login(LoginRequest $request): RedirectResponse
     {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
-
-        if (Auth::guard('web')->attempt($credentials)) {
+        if (Auth::attempt($request->credentials())) {
             $request->session()->regenerate();
-
-            return redirect()->route('dashboard')->with('success', 'Welcome');
+            return redirect()->intended(route('dashboard'));
         }
 
-        return back()->with('loginError', 'login failed');
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
+    }
+
+    public function logout(Request $request): RedirectResponse
+    {
+        $this->authService->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->intended(route('dashboard'));
     }
 
     public function register()

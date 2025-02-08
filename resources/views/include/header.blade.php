@@ -10,6 +10,14 @@
             <div class="container my-auto d-xl-block d-none">
                 {{-- <h5>Selamat Datang Kembali,{{ Auth::user()->nama }} </h5> --}}
                 <h5>Selamat Datang Kembali, </h5>
+
+                <form id="logout-form" action="{{ route('auth.logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+
+                <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i class="bi bi-box-arrow-left me-2"></i> Logout
+                </a>
             </div>
             <div class="dropdown">
                 <a href="#" data-bs-toggle="dropdown" aria-expanded="false">

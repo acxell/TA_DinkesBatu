@@ -97,7 +97,7 @@
                     <button class="btn btn-primary-color w-100" id="btn-next">Lanjut</button>
                 </div>
                 <div class="p-3 text-center">
-                    <label>Sudah Punya Akun? <a href="#"
+                    <label>Sudah Punya Akun? <a href="{{ route('login') }}"
                             class="primary-color text-decoration-none">Masuk</a></label>
                 </div>
             </div>
