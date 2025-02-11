@@ -20,6 +20,7 @@ use App\Http\Controllers\UserController;
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+
     Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 });
 
@@ -32,5 +33,4 @@ Route::middleware(['guest'])->group(function () {
 
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
 Route::post('/users', [UserController::class, 'store'])->name('users.store');
-Route::post('/users/{id}', [UserController::class, 'update'])->name('users.update');
-Route::post('/users/{id}/delete', [UserController::class, 'destroy'])->name('users.destroy');
+Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
