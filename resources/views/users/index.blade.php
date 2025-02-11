@@ -3,48 +3,41 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <!-- Card di Kiri -->
-            <div class="col-lg-4 mb-3">
-                <x-card class="h-100">
-                    <form id="userForm" class="row g-3">
-                        @csrf
-                        <div class="col-12">
-                            <label for="nameID" class="form-label">Name</label>
-                            <input type="text" id="name" class="form-control" name="name" placeholder="Name"
-                                required>
-                        </div>
-                        <div class="col-12">
-                            <label for="emailID" class="form-label">Email</label>
-                            <input type="email" id="email" name="email" class="form-control" placeholder="Email"
-                                required>
-                        </div>
-                        <div class="col-12">
-                            <label for="passwordID" class="form-label">Password</label>
-                            <input type="password" id="password" name="password" class="form-control"
-                                placeholder="Password" required>
-                        </div>
-                        <div class="col-12">
-                            <button class="btn btn-primary-color w-100">Simpan</button>
-                        </div>
-                    </form>
-                </x-card>
-            </div>
-
-            <!-- Datatables di Kanan -->
-            <div class="col-lg-8">
+            <div class="col-lg-12">
+                @include('users.create')
+                <div class="d-flex justify-content-end mb-3">
+                    <button class="btn btn-primary-color" data-bs-toggle="modal" data-bs-target="#createModal">
+                        Tambah Data
+                    </button>
+                    <button class="btn btn-primary-color" id="reload">
+                        Reload dataTables
+                    </button>
+                </div>
                 <x-card class="h-100">
                     <div class="table-responsive">
-                        <table class="table table-bordered" id="userTable">
-                            <thead class="table-dark">
+                        <table class="table table-striped" style="width:100%" id="userTable">
+                            <thead class="table">
                                 <tr>
                                     <th>No</th>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    {{-- <th>Actions</th> --}}
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-
+                                @foreach ($users as $user)
+                                    <tr id="user_{{ $user->id }}">
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-danger"
+                                                onclick="confirmDelete('{{ $user->id }}')">
+                                                Delete
+                                            </button>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

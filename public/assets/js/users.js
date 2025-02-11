@@ -1,18 +1,11 @@
 $(document).ready(function () {
     let userTable = $("#userTable").DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: "/api/users",
-        columns: [
-            {
-                data: null,
-                render: function (data, type, row, meta) {
-                    return meta.row + 1; // Auto-numbering
-                },
-            },
-            { data: "name" },
-            { data: "email" },
-        ],
+        serverSide: false,
+    });
+
+    $("#reload").click(function () {
+        userTable.ajax.reload();
+        log
     });
 
     $("#userForm").submit(function (e) {
@@ -29,10 +22,15 @@ $(document).ready(function () {
             url: "/users",
             type: "POST",
             data: formData,
+            header: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
             success: function (response) {
                 alert("User berhasil ditambahkan!");
                 $("#userForm")[0].reset();
+                $("#createModal").hide();
                 userTable.ajax.reload();
+
             },
             error: function (xhr) {
                 alert("Gagal menambahkan user!");
