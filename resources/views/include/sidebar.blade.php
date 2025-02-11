@@ -45,7 +45,13 @@
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item">
-                            <a href="{{ route('users.index') }}" class="submenu-link">Data Orang Tua</a>
+                            <a href="{{ route('users.index') }}" class="submenu-link">Data Pengguna</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="{{ route('permissions.index') }}" class="submenu-link">Data Permission Pengguna</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="{{ route('roles.index') }}" class="submenu-link">Data Role Pengguna</a>
                         </li>
                     </ul>
                 </li>

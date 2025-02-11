@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Services\UserService;
-use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Http\Requests\UserRequest\StoreUserRequest;
-use App\Http\Requests\UpdateUserRequest;
-use Illuminate\Http\Response;
+use App\Http\Requests\UserRequest\UpdateUserRequest;
 
 class UserController extends Controller {
     protected $userService;
@@ -22,12 +20,12 @@ class UserController extends Controller {
 
     public function store(StoreUserRequest $request) {
         $this->userService->createUser($request->validated());
-        return redirect()->back(); // Kembali ke halaman tanpa JSON response
+        return redirect()->back();
     }
     
     public function destroy($id) {
         $this->userService->deleteUser($id);
-        return redirect()->back(); // Kembali ke halaman tanpa JSON response
+        return redirect()->back();
     }
     
 

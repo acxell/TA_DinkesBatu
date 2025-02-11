@@ -1,5 +1,5 @@
 @extends('layout.index')
-@section('title', 'dashboard')
+@section('title', 'Users Page')
 @section('content')
 <div class="container-fluid">
     <div class="row">
