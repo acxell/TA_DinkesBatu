@@ -133,21 +133,21 @@ function confirmDelete(id) {
             var form = document.createElement('form');
             form.method = 'POST';
             form.action = `/roles/${id}`;
-            
+
             // Add CSRF token
             var csrfToken = document.createElement('input');
             csrfToken.type = 'hidden';
             csrfToken.name = '_token';
             csrfToken.value = '{{ csrf_token() }}';
             form.appendChild(csrfToken);
-            
+
             // Add method spoofing
             var methodField = document.createElement('input');
             methodField.type = 'hidden';
             methodField.name = '_method';
             methodField.value = 'DELETE';
             form.appendChild(methodField);
-            
+
             // Submit the form
             document.body.appendChild(form);
             form.submit();
