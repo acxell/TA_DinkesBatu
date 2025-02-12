@@ -24,13 +24,13 @@ class PermissionController extends Controller {
     
     public function destroy($id) {
         $this->permissionService->deletePermission($id);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Permission Berhasil Dihapus');
     }
     
 
     public function update(UpdatePermissionRequest $request, $id) {
-        $permission = $this->permissionService->updatePermission($id, $request->validated());
-        return redirect()->back();
+        $this->permissionService->updatePermission($id, $request->validated());
+        return redirect()->back()->with('success', 'Data Permission Berhasil Diubah');
     }
 }
 

@@ -10,3 +10,14 @@
 
 <script src={{ asset('assets/js/sidebar.js') }}></script>
 <script src={{ asset('assets/js/app.js') }}></script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var toastEl = document.querySelector('.toast');
+        if (toastEl) {
+            var toast = new bootstrap.Toast(toastEl);
+            toast.show();
+        }
+    });
+</script>
