@@ -21,11 +21,12 @@ class UserRepository implements UserRepositoryInterface {
 
     public function updateUser($id, array $data) {
         $user = User::findOrFail($id);
+
         if (isset($data['password'])) {
             $data['password'] = bcrypt($data['password']);
         }
         $user->update($data);
-        return $user;
+        return $user->fresh();
     }
 
     public function deleteUser($id) {

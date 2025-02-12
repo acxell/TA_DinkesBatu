@@ -18,23 +18,24 @@ use App\Http\Controllers\UserController;
 |
 */
 
+
 // Group routes that require authentication
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::post('/users', [UserController::class, 'store'])->name('users.store');
+    Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
     Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 
     Route::get('/roles', [RoleController::class, 'index'])->name('roles.index');
     Route::post('/roles', [RoleController::class, 'store'])->name('roles.store');
     Route::delete('/roles/{id}', [RoleController::class, 'destroy'])->name('roles.destroy');
+    Route::put('/roles/{id}', [RoleController::class, 'update'])->name('roles.update');
 
     Route::get('/permissions', [PermissionController::class, 'index'])->name('permissions.index');
     Route::post('/permissions', [PermissionController::class, 'store'])->name('permissions.store');
     Route::delete('/permissions/{id}', [PermissionController::class, 'destroy'])->name('permissions.destroy');
-
-
+    Route::put('/permissions/{id}', [PermissionController::class, 'update'])->name('permissions.update');
     Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 });
 

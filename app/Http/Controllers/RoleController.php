@@ -24,13 +24,13 @@ class RoleController extends Controller {
     
     public function destroy($id) {
         $this->roleService->deleteRole($id);
-        return redirect()->back(); 
+        return redirect()->back()->with('success', 'Role Berhasil Dihapus'); 
     }
     
 
     public function update(UpdateRoleRequest $request, $id) {
-        $role = $this->roleService->updateRole($id, $request->validated());
-        return redirect()->back(); 
+        $this->roleService->updateRole($id, $request->validated());
+        return redirect()->back()->with('success', 'Data Role Berhasil Diubah'); 
     }
 }
 
