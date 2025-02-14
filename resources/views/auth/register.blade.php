@@ -50,49 +50,40 @@
                             </a>
                         </li>
                     </ul>
-                    <form action="#">
+                    <form action="{{ route('auth.register') }}" method="POST" class="form" id="form-register" enctype="multipart/form-data">
+                        @csrf
                         <div class="tab-content">
                             <div id="step-1" class="tab-pane" role="tabpanel" aria-labelledby="step-1">
                                 <div class="mb-3">
                                     <label for="roleInput" class="form-label fw-semibold">Role</label>
-                                    <select name="role" id="role" class="form-select">
-                                        <option value="#">Puskesmas</option>
-                                        <option value="#">Admin</option>
-                                        <option value="#">DinKes</option>
+                                    <select class="form-select" name="roles" id="role">
+                                        @foreach ($roles as $role)
+                                        <option value="{{ $role->name }}">{{ $role->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
                             <div id="step-2" class="tab-pane" role="tabpanel" aria-labelledby="step-2">
                                 <div class="mb-3">
                                     <label for="nama" class="form-label fw-semibold">Nama Lengkap</label>
-                                    <input type="text" class="form-control" id="nama"
+                                    <input type="text" class="form-control" id="nama" name="name"
                                         placeholder="Masukkan Nama Anda">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="nomorhp" class="form-label fw-semibold">Nomor HP</label>
-                                    <input type="number" class="form-control" id="nomorhp"
-                                        placeholder="Masukkan Nomor HP Anda">
-                                </div>
-                                <div class="mb-3">
                                     <label for="emailInput" class="form-label fw-semibold">Email</label>
-                                    <input type="email" class="form-control" id="emailInput"
-                                        placeholder="email@mail.com">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="alamat" class="form-label fw-semibold">Alamat</label>
-                                    <input type="text" class="form-control" id="alamat"
-                                        placeholder="Masukkan Alamat Anda">
+                                    <input type="email" class="form-control" id="emailInput" name="email"
+                                        placeholder="email@gmail.com">
                                 </div>
                             </div>
                             <div id="step-3" class="tab-pane" role="tabpanel" aria-labelledby="step-3">
                                 <div class="mb-2">
                                     <label for="passwordInput" class="form-label fw-semibold">Password</label>
-                                    <input type="password" class="form-control" id="passwordInput"
+                                    <input type="password" class="form-control" name="password" id="passwordInput"
                                         placeholder="********">
                                 </div>
                             </div>
                         </div>
-                    <button class="btn btn-primary-color w-100 d-none" id="btn-submit">Daftar</button>
+                        <button class="btn btn-primary-color w-100 d-none" id="btn-submit">Daftar</button>
                     </form>
                     <button class="btn btn-primary-color w-100" id="btn-next">Lanjut</button>
                 </div>
@@ -113,12 +104,12 @@
         $('#smartwizard').on("showStep", function(e, anchorObject, stepIndex, stepDirection, stepPosition) {
             $('.sw-btn-next, .sw-btn-prev').hide();
             if (stepPosition === 'last') {
-            $("#btn-next").hide();  // Sembunyikan tombol Next
-            $("#btn-submit").removeClass("d-none"); // Tampilkan tombol Submit
-        } else {
-            $("#btn-next").show(); // Tampilkan tombol Next
-            $("#btn-submit").addClass("d-none"); // Sembunyikan tombol Submit
-        }
+                $("#btn-next").hide(); // Sembunyikan tombol Next
+                $("#btn-submit").removeClass("d-none"); // Tampilkan tombol Submit
+            } else {
+                $("#btn-next").show(); // Tampilkan tombol Next
+                $("#btn-submit").addClass("d-none"); // Sembunyikan tombol Submit
+            }
         });
         $(function() {
             // SmartWizard initialize

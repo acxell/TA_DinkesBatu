@@ -10,11 +10,16 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable {
     use HasFactory, Notifiable, HasUuids, HasRoles;
+    
     protected $table = 'users';
 
     protected $guarded = [
         'id',
     ];
+
+    public function userStatus() {
+        return $this->hasOne(UserStatus::class, 'id', 'user_status_id');
+    }
 
     public function getIncrementing()
     {

@@ -18,6 +18,8 @@
                                 <th>No</th>
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>Status</th>
+                                <th>Role</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -27,6 +29,14 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
+                                <td>{{ $user->userStatus->name }}</td>
+                                <td>
+                                @if (!empty($user->getRoleNames()))
+                                @foreach ($user->getRoleNames() as $rolename)
+                                <label class="badge bg-primary mx-1">{{ $rolename }}</label>
+                                @endforeach
+                                @endif
+                                </td>
                                 <td>
                                     <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editModal{{$user->id}}">
                                         Edit

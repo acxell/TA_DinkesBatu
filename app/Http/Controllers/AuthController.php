@@ -3,18 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AuthRequest\LoginRequest;
+use App\Http\Requests\AuthRequest\RegisterRequest;
 use App\Services\AuthService;
+use App\Services\RoleService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    protected $authService;
+    protected $authService, $roleService;
 
-    public function __construct(AuthService $authService)
+    public function __construct(AuthService $authService, RoleService $roleService)
     {
         $this->authService = $authService;
+        $this->roleService = $roleService;
     }
 
     public function index()
@@ -44,6 +47,14 @@ class AuthController extends Controller
 
     public function register()
     {
-        return view('auth.register');
+        $roles = $this->roleService->getAllRoles();
+        return view('auth.register', ['roles' => $roles]);
     }
+
+    public function store(RegisterRequest $request)
+    {
+        $this->authService->register($request->validated());
+        return redirect()->back()->with('success', 'User Berhasil Didaftarkan');
+    }
+
 }
