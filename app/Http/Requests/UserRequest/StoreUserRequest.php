@@ -12,4 +12,10 @@ class StoreUserRequest extends FormRequest {
             'password' => 'required|min:6'
         ];
     }
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'user_status_id' => 1
+        ]);
+    }
 }

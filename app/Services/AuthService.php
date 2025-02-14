@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Role;
 use App\Repositories\Interfaces\AuthRepositoryInterface;
 use Illuminate\Support\Facades\Request;
 
@@ -19,4 +20,18 @@ class AuthService {
     public function logout() {
         return $this->authRepository->logout();
     }
+
+    public function register(array $data) {
+        $user = $this->authRepository->register($data);
+    
+        if (isset($data['roles'])) {
+            $role = Role::where('name', $data['roles'])->first();
+            if ($role) {
+                $user->assignRole($role->name);
+            }
+        }
+    
+        return $user;
+    }
+    
 }

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->foreignId('user_status_id')->constrained('user_statuses')->required();
             $table->timestamps();
         });
     }
