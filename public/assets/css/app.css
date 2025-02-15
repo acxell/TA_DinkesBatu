@@ -3,9 +3,7 @@
 body {
     font-family: "Roboto", sans-serif !important;
     background-color: rgba(242, 242, 242, 1) !important;
-
 }
-
 
 .btn-primary-color {
     color: white!important;
@@ -20,174 +18,145 @@ body {
     color: rgba(132, 221, 99, 1);
 }
 
-
-#sidebar .sidebar-wrapper {
-    left: -300px;
-}
-#sidebar ~ #main {
-    margin-left: 0;
-}
-@media screen and (min-width: 1200px) {
-    #sidebar .sidebar-wrapper {
-        left: 0;
-    }
-    #sidebar ~ #main {
-        margin-left: 300px;
-    }
-}
-#sidebar.inactive .sidebar-wrapper {
-    left: -300px;
-}
-#sidebar.inactive ~ #main {
-    margin-left: 0;
-}
-#sidebar.active .sidebar-wrapper {
-    left: 0;
-}
-.sidebar-wrapper {
+/* Sidebar Styles */
+#sidebar {
     width: 300px;
-    height: 100vh;
     position: fixed;
     top: 0;
-    z-index: 10;
+    left: -300px;
+    height: 100vh;
+    background: white;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
-    background-color: #fff;
-    bottom: 0;
-    transition: left 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 10;
+    transition: left 0.3s ease-in-out, background 0.3s;
+    padding: 1rem;
 }
-.sidebar-wrapper .sidebar-header {
-    padding: 2rem 2rem 1rem;
-    font-size: 2rem;
-    font-weight: 700;
+
+/* Ketika sidebar aktif */
+#sidebar.active {
+    left: 0;
 }
-.sidebar-wrapper .sidebar-header img {
-    height: 1.2rem;
+
+/* Styling Sidebar Header */
+.sidebar-header {
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 1rem;
 }
-.sidebar-wrapper .sidebar-toggler.x {
-    position: absolute;
-    right: 1.75rem;
-    top: 0.25rem;
-    display: none;
+
+.sidebar-header img {
+    height: 1.5rem;
 }
-.sidebar-wrapper .menu {
-    padding-left: 0;
-    margin-top: 2rem;
-    padding: 0 2rem;
-    font-weight: 600;
+
+.sidebar-toggler {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
 }
-.sidebar-wrapper .menu .sidebar-title {
-    padding: 0 1rem;
-    margin: 1.5rem 0 1rem;
-    font-size: 1rem;
+
+/* Sidebar Menu */
+.menu {
     list-style: none;
-    font-weight: 600;
-    color: #333;
+    padding: 0;
+    margin-top: 1rem;
 }
-.sidebar-wrapper .menu .sidebar-link {
-    display: block;
-    padding: 0.7rem 1rem;
-    font-size: 1rem;
+
+.menu .sidebar-item {
+    margin-bottom: 0.5rem;
+}
+
+/* Styling Link Sidebar */
+.sidebar-link {
     display: flex;
     align-items: center;
+    padding: 0.7rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: #7E8B9E;
     border-radius: 0.5rem;
-    transition: all 0.5s;
-    text-decoration: none;
-    color: #333;
+    transition: background-color 0.3s, padding-left 0.3s;
 }
-.sidebar-wrapper .menu .sidebar-link svg,
-.sidebar-wrapper .menu .sidebar-link i {
-    color: #7c8db5;
+
+.sidebar-link i {
+    margin-right: 1rem;
+    color: #7E8B9E;
 }
-.sidebar-wrapper .menu .sidebar-link i:before {
-    vertical-align: top;
+
+/* Hover Efek */
+.sidebar-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding-left: 1.2rem;
 }
-.sidebar-wrapper .menu .sidebar-link span {
-    margin-left: 1rem;
-}
-.sidebar-wrapper .menu .sidebar-link:hover {
-    background-color: #f0f1f5;
-}
-.sidebar-wrapper .menu .sidebar-item {
-    list-style: none;
-    margin-top: 0.5rem;
-    position: relative;
-}
-.sidebar-wrapper .menu .sidebar-item.active.has-sub .sidebar-link:after {
-    content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9" style="fill:none;stroke:white;stroke-width:1"></polyline></svg>');
-}
-.sidebar-wrapper .menu .sidebar-item.active > .sidebar-link {
+
+/* Styling Aktif Menu */
+.sidebar-item.active > .sidebar-link {
     background: linear-gradient(90deg, #84DD63 0%, #589342 100%);
+    color: white;
 }
-.sidebar-wrapper .menu .sidebar-item.active > .sidebar-link span {
-    color: #fff;
-}
-.sidebar-wrapper .menu .sidebar-item.active > .sidebar-link svg,
-.sidebar-wrapper .menu .sidebar-item.active > .sidebar-link i {
-    fill: #fff;
-    color: #fff;
-}
-.sidebar-wrapper .menu .sidebar-item.active > .sidebar-link.has-sub:after {
-    content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9" style="fill:none;stroke:white;stroke-width:1"></polyline></svg>');
-}
-.sidebar-wrapper .menu .submenu {
+
+/* Styling Submenu */
+.submenu {
     list-style: none;
     max-height: 0;
     overflow: hidden;
-    transition: all 0.5s;
+    transition: max-height 0.3s ease-in-out;
 }
-.sidebar-wrapper .menu .submenu.active {
-    height: var(--submenu-height);
+
+.submenu.submenu-open {
+    max-height: 500px; /* Pastikan cukup besar untuk semua submenu */
+}
+
+/* Styling Submenu Item */
+.submenu-item a {
+    padding: 0.5rem 2rem;
     display: block;
-}
-.sidebar-wrapper .menu .submenu.submenu-closed {
-    max-height: 0;
-}
-.sidebar-wrapper .menu .submenu.submenu-open {
-    max-height: var(--submenu-height);
-}
-.sidebar-wrapper .menu .submenu .submenu-item.active {
-    position: relative;
-}
-.sidebar-wrapper .menu .submenu .submenu-item.active > a {
-    color: #333;
-    font-weight: 700;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #7E8B9E;
     text-decoration: none;
+    transition: padding-left 0.3s, color 0.3s;
 }
-.sidebar-wrapper .menu .submenu .submenu-item a {
-    padding: 0.7rem 2rem;
-    display: block;
-    color: #333;
-    font-size: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    transition: all 0.3s;
+
+/* Styling Aktif Submenu */
+.submenu-item.active > a {
+    background: linear-gradient(90deg, #84DD63 0%, #589342 100%);
+    color: #ffffff;
+    padding: 0.7rem 1rem;
     text-decoration: none;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s, padding-left 0.3s;
 }
-.sidebar-wrapper .menu .submenu .submenu-item a:hover {
-    margin-left: 0.3rem;
-    color: #292828;
+
+/* Hover Submenu */
+.submenu-item a:hover {
+    padding-left: 2.2rem;
+    color: #505864;
 }
-.sidebar-item.has-sub,
-.submenu-item.has-sub {
-    overflow: hidden;
-    position: relative;
-}
+
+/* Tanda Panah untuk Menu yang Memiliki Submenu */
 .sidebar-item.has-sub > .sidebar-link:after {
-    content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9" style="fill:none;stroke:gray;stroke-width:1"></polyline></svg>');
-    position: absolute;
-    color: #ccc;
-    right: 15px;
-    top: 12px;
-    display: block;
+    content: "\276F"; /* Panah kanan tanpa fill */
+    font-size: 0.8rem;
+    margin-left: auto;
+    color: #7E8B9E;
+    transition: transform 0.3s;
+    transform: rotate(0deg);
 }
-.submenu-item.has-sub > .submenu-link:after {
-    content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9" style="fill:none;stroke:gray;stroke-width:1"></polyline></svg>');
-    position: absolute;
-    color: #ccc;
-    right: 15px;
-    top: 12px;
-    display: block;
+
+/* Rotate Panah jika Submenu Dibuka */
+.sidebar-item.has-sub.submenu-open > .sidebar-link:after {
+    transform: rotate(90deg);
 }
+
+/* Backdrop */
 .sidebar-backdrop {
     position: fixed;
     top: 0;
@@ -196,13 +165,34 @@ body {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 9;
+    display: none;
+    transition: opacity 0.3s ease-in-out;
+    opacity: 0;
 }
+
+.sidebar-backdrop.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Responsive */
+@media screen and (min-width: 1200px) {
+    #sidebar {
+        left: 0;
+    }
+    #main {
+        margin-left: 300px;
+    }
+}
+
 @media screen and (max-width: 1199px) {
-    .sidebar-wrapper {
-        position: fixed;
+    #sidebar {
         left: -300px;
     }
-    .sidebar-wrapper .sidebar-toggler.x {
+    #sidebar.active {
+        left: 0;
+    }
+    .sidebar-backdrop.active {
         display: block;
     }
 }
