@@ -1,5 +1,5 @@
 @extends('layout.index')
-@section('title', 'Posyandu Page')
+@section('title', 'Laporan Perkembangan Anak')
 @section('content')
     <div class="container-fluid">
         <div class="row">
@@ -11,12 +11,17 @@
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         </form>
                         <div class="d-flex gap-3">
-                            <button class="btn btn-primary-color" data-bs-toggle="modal" data-bs-target="#createModal">
-                                Tambah Posyandu
-                            </button>
-                            <button class="btn btn-primary-color" data-bs-toggle="modal" data-bs-target="#createModal">
-                                Tambah Akun Posyandu
-                            </button>
+                            <form class="d-flex">
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>Pilih Puskesmas</option>
+                                    <option value="1">Singosari</option>
+                                    <option value="2">A</option>
+                                    <option value="3">B</option>
+                                </select>
+                            </form>
+                            <form class="d-flex">
+                                <input type="date" name="date" id="date" class="form-control" value="{{ date('Y-m-d') }}">
+                            </form>
                             <button class="btn btn-primary-color">
                                 Ekspor <i class="bi bi-download ms-2"></i>
                             </button>
@@ -27,7 +32,7 @@
                             <thead class="table primary-thead">
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama Posyandu</th>
+                                    <th>Nama Puskesmas</th>
                                     <th>Alamat</th>
                                     <th>Penanggung Jawab</th>
                                     <th>Aksi</th>
