@@ -41,12 +41,18 @@
                 <li class="sidebar-item has-sub">
                     <a href="#" class="sidebar-link">
                         <i class="bi bi-people-fill"></i>
-                        <span>Data Pengguna</span>
+                        <span>Kelola Unit</span>
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item">
-                            <a href="{{ route('users.index') }}" class="submenu-link">Data Pengguna</a>
+                            <a href="{{ route('puskesmas.index') }}" class="submenu-link">Kelola Puskesmas</a>
                         </li>
+                        <li class="submenu-item">
+                            <a href="{{ route('posyandu.index') }}" class="submenu-link">Kelola Posyandu</a>
+                        </li>
+                        {{-- <li class="submenu-item">
+                            <a href="{{ route('users.index') }}" class="submenu-link">Data Pengguna</a>
+                        </li> --}}
                         <li class="submenu-item">
                             <a href="{{ route('permissions.index') }}" class="submenu-link">Data Permission Pengguna</a>
                         </li>

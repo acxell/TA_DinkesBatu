@@ -6,6 +6,8 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PosyanduController;
+use App\Http\Controllers\PuskesmasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +24,10 @@ Route::get('/users', [UserController::class, 'index'])->name('users.index');
 Route::post('/users', [UserController::class, 'store'])->name('users.store');
 Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
 Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+
+Route::get('/posyandu', [PosyanduController::class, 'index'])->name('posyandu.index');
+Route::get('/puskesmas', [PuskesmasController::class, 'index'])->name('puskesmas.index');
+
 
 Route::get('/roles', [RoleController::class, 'index'])->name('roles.index');
 Route::post('/roles', [RoleController::class, 'store'])->name('roles.store');
