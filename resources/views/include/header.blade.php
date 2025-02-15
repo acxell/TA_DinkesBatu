@@ -4,7 +4,7 @@
     <div class="container-fluid" style="height: 100px">
         <div class="d-flex justify-content-between align-items-center mx-2 my-3 rounded-4"
             style="background-color: white; min-height: 75px">
-            <a href="#" class="burger-btn d-xl-none d-block text-black mx-2">
+            <a href="#" id="burger-btn" class="burger-btn d-xl-none d-block text-black mx-2">
                 <i class="bi bi-justify fs-3"></i>
             </a>
             <div class="container my-auto d-xl-block d-none">

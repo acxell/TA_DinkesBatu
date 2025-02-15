@@ -9,7 +9,6 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script src={{ asset('assets/js/sidebar.js') }}></script>
-<script src={{ asset('assets/js/app.js') }}></script>
 
 
 <script>
