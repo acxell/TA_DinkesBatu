@@ -16,6 +16,7 @@ class UserRepository implements UserRepositoryInterface {
 
     public function createUser(array $data) {
         $data['password'] = bcrypt($data['password']);
+        $data['user_status_id'] = 1;
         return User::create($data);
     }
 
@@ -26,7 +27,7 @@ class UserRepository implements UserRepositoryInterface {
             $data['password'] = bcrypt($data['password']);
         }
         $user->update($data);
-        return $user->fresh();
+        return $user->load('roles')->fresh();
     }
 
     public function deleteUser($id) {
