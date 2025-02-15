@@ -12,6 +12,7 @@ class UpdateUserRequest extends FormRequest
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $this->route('id'),
             'password' => 'nullable|string',
+            'roles' => 'required',
         ];
     }
 

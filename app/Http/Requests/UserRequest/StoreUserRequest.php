@@ -9,13 +9,8 @@ class StoreUserRequest extends FormRequest {
         return [
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:6'
+            'password' => 'required|min:6',
+            'roles' => 'required',
         ];
-    }
-    protected function prepareForValidation()
-    {
-        $this->merge([
-            'user_status_id' => 1
-        ]);
     }
 }

@@ -5,19 +5,22 @@ namespace App\Http\Controllers;
 use App\Services\UserService;
 use App\Http\Requests\UserRequest\StoreUserRequest;
 use App\Http\Requests\UserRequest\UpdateUserRequest;
+use App\Services\RoleService;
 
 class UserController extends Controller
 {
-    protected $userService;
+    protected $userService, $roleService;
 
-    public function __construct(UserService $userService)
+    public function __construct(UserService $userService, RoleService $roleService)
     {
         $this->userService = $userService;
+        $this->roleService = $roleService;
     }
 
     public function index()
     {
-        return view('users.index', ['users' => $this->userService->getAllUsers()]);
+        $roles = $this->roleService->getAllRoles();
+        return view('users.index', ['users' => $this->userService->getAllUsers(), 'roles' => $roles]);
     }
 
     public function store(StoreUserRequest $request)
@@ -35,7 +38,13 @@ class UserController extends Controller
 
     public function update(UpdateUserRequest $request, $id)
     {
-        $this->userService->updateUser($id, $request->validated());
-        return redirect()->back()->with('success', 'Data User Berhasil Diubah');
+        $roles = $this->roleService->getAllRoles();
+        $user = $this->userService->updateUser($id, $request->validated());
+
+        $userRoles = $user->roles->pluck('name')->toArray();
+        return redirect()->back()->with([
+            'success' => 'Data User Berhasil Diubah',
+            'userRoles' => $userRoles
+        ]);
     }
 }
