@@ -23,14 +23,11 @@
                 <li class="sidebar-item has-sub {{ request()->is('puskesmas*') ? 'submenu-open' : '' }}">
                     <a href="#" class="sidebar-link">
                         <i class="bi bi-file-earmark-ruled-fill"></i>
-                        <span>Laporan</span>
+                        <span>Laporan Perkembangan</span>
                     </a>
                     <ul class="submenu">
-                        <li class="submenu-item {{ request()->routeIs('#') ? 'active' : '' }}">
-                            <a href="#" class="submenu-link">Kecamatan</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="#" class="submenu-link">Kelurahan</a>
+                        <li class="submenu-item {{ request()->routeIs('reports*') ? 'active' : '' }}">
+                            <a href="{{route('reports.index')}}" class="submenu-link">Daftar Laporan</a>
                         </li>
                     </ul>
                 </li>
@@ -63,6 +60,9 @@
                         </li>
                         <li class="submenu-item {{ request()->routeIs('roles.index') ? 'active' : '' }}">
                             <a href="{{ route('roles.index') }}" class="submenu-link">Data Role Pengguna</a>
+                        </li>
+                        <li class="submenu-item {{ request()->routeIs('users.index') ? 'active' : '' }}">
+                            <a href="{{ route('users.index') }}" class="submenu-link">Kelola Pengguna</a>
                         </li>
                     </ul>
                 </li>
