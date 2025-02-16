@@ -5,7 +5,6 @@
         <div class="row">
             <div class="col-lg-12">
                 @include('roles.create')
-                
                 <x-card class="h-100">
                     <div class="d-flex justify-content-between mb-3">
                         <form class="d-flex">
@@ -32,6 +31,10 @@
                                         <td>{{ $role->name }}</td>
                                         <td>{{ $role->guard_name }}</td>
                                         <td>
+                                            <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal"
+                                                data-bs-target="#assignModal{{ $role->id }}">
+                                                Assign Permission
+                                            </button>
                                             <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal"
                                                 data-bs-target="#editModal{{ $role->id }}">
                                                 Edit
@@ -47,6 +50,7 @@
                                         </td>
                                     </tr>
                                     @include('roles.edit', ['role' => $role])
+                                    @include('roles.assign', ['role' => $role])
                                 @endforeach
                             </tbody>
                         </table>

@@ -42,7 +42,7 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="mb-2">
+                        <div class="mb-3">
                             <label for="passwordInput" class="form-label fw-semibold">Password</label>
                             <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"
                                 id="passwordInput" placeholder="********">
