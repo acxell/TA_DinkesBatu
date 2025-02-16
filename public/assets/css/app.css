@@ -7,14 +7,26 @@ body {
 
 .btn-primary-color {
     font-weight: 500;
+    color: white !important;
+    background-color: #84DD63 !important;
+    border-radius: 10px !important;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-secondary-color {
+    font-weight: 500;
     color: #0D0D12 !important;
     background-color: transparent !important;
     border: 1px solid #84DD63;
     border-radius: 10px !important;
     transition: background-color 0.3s, color 0.3s;
-
 }
+
 .btn-primary-color:hover {
+    background-color: #5b9945 !important;
+}
+
+.btn-secondary-color:hover {
     background-color: #84DD63 !important;
 }
 
@@ -26,6 +38,16 @@ body {
 thead.primary-thead {
     --bs-table-bg: #E6F8E0 !important; /* Warna biru */
     color: #1E2022 !important; /* Warna teks putih */
+}
+
+/* Custom Tabs */
+.nav {
+    --bs-nav-link-color: #7e8b9e !important; /* Warna teks */
+    --bs-nav-link-hover-color: #333 !important; /* Warna teks */
+}
+
+.nav-tabs .nav-link.active {
+    color: #333 !important; /* Warna teks */
 }
 
 /* Sidebar Styles */
